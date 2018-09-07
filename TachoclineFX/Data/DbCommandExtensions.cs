@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Data;
 
-namespace TachoclineFX 
+namespace TachoclineFX.Data
 {
     public static class DbCommandExtensions
     {
