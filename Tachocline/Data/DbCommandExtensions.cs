@@ -6,7 +6,7 @@ namespace Tachocline.Data
 {
     public static class DbCommandExtensions
     {
-        public static IList GetSingleRowValues(IDbCommand command)
+        public static IList GetSingleRowValues(this IDbCommand command)
         {
             using (var reader = command.ExecuteReader(CommandBehavior.SingleRow))
             {
@@ -22,7 +22,5 @@ namespace Tachocline.Data
                 return values;
             }
         }
-
-        //TODO: Add converters from IList -> IDataRecord
     }
 }
