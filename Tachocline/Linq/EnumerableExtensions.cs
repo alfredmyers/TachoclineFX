@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 
 namespace Tachocline.Linq
 {
-    public static class Enumerable
+    public static class EnumerableExtensions
     {
         public static IEnumerable<TSource> Where<TSource, TException>(IEnumerable<TSource> sequence, Predicate<TSource> predicate, Action<TException, TSource> exceptionHandler) where TException : Exception
         {
