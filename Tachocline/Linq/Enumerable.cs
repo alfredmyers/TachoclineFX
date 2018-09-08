@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
-namespace TachoclineFX.Linq
+namespace Tachocline.Linq
 {
     public static class Enumerable
     {

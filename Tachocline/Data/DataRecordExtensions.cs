@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-namespace TachoclineFX.Data
+namespace Tachocline.Data
 {
     public static class DataRecordExtensions
     {

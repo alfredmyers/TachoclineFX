@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TachoclineFX", "TachoclineFX\TachoclineFX.csproj", "{A12CBD74-6F59-4C98-9CA4-E086B60D6710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tachocline", "Tachocline\Tachocline.csproj", "{A12CBD74-6F59-4C98-9CA4-E086B60D6710}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{DCC9292A-75E9-424C-9C93-B58CF0F29E2A}"
 EndProject

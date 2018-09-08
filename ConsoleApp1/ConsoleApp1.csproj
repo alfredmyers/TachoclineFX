@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TachoclineFX\TachoclineFX.csproj" />
+    <ProjectReference Include="..\Tachocline\Tachocline.csproj" />
   </ItemGroup>
 
   <ItemGroup>

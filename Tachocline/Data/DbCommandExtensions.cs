@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Data;
 
-namespace TachoclineFX.Data
+namespace Tachocline.Data
 {
     public static class DbCommandExtensions
     {
@@ -22,5 +22,7 @@ namespace TachoclineFX.Data
                 return values;
             }
         }
+
+        //TODO: Add converters from IList -> IDataRecord
     }
 }
