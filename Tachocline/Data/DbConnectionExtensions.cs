@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Data;
 
 namespace Tachocline.Data
@@ -27,6 +28,14 @@ namespace Tachocline.Data
             using (var command = CreateCommand(connection, commandText))
             {
                 return command.ExecuteScalar();
+            }
+        }
+
+        public static IList GetSingleRowValues(this IDbConnection connection, string commandText)
+        {
+            using (var command = CreateCommand(connection, commandText))
+            {
+                return DbCommandExtensions.GetSingleRowValues(command);
             }
         }
     }

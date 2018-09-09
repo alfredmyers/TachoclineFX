@@ -5,10 +5,10 @@ namespace Tachocline.Data
 {
     public static class DataRecordExtensions
     {
-        public static T GetNullableReferenceValue<T>(this IDataRecord record, int ordinal, Func<int, T> get) where T: class 
+        public static T GetNullableReferenceValue<T>(this IDataRecord record, int ordinal, Func<int, T> get) where T : class
             => record.IsDBNull(ordinal) ? (T)null : get(ordinal);
 
-        public static T? GetNullableValue<T>(this IDataRecord record, int ordinal, Func<int, T> get) where T: struct
+        public static T? GetNullableValue<T>(this IDataRecord record, int ordinal, Func<int, T> get) where T : struct
             => record.IsDBNull(ordinal) ? (T?)null : get(ordinal);
 
         public static object GetNullableValue(this IDataRecord record, int ordinal) => record.GetNullableReferenceValue(ordinal, record.GetValue);
@@ -36,5 +36,12 @@ namespace Tachocline.Data
         public static decimal? GetNullableDecimal(this IDataRecord record, int ordinal) => record.GetNullableValue(ordinal, record.GetDecimal);
 
         public static DateTime? GetNullableDateTime(this IDataRecord record, int ordinal) => record.GetNullableValue(ordinal, record.GetDateTime);
+
+        public static object[] GetValues(this IDataRecord record)
+        {
+            var values = new object[record.FieldCount];
+            record.GetValues(values);
+            return values;
+        }
     }
 }
