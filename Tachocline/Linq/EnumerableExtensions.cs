@@ -20,7 +20,6 @@ namespace Tachocline.Linq
             {
                 throw new ArgumentNullException(nameof(exceptionHandler));
             }
-            Contract.EndContractBlock();
 
             foreach (TSource item in sequence)
             {
