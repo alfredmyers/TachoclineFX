@@ -1,0 +1,21 @@
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: |
+    dotnet build -c $(buildConfiguration)
+    dotnet publish -c $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
+
+- task: PublishBuildArtifacts@1
+
+# - script: dotnet pack /p:PackageVersion=$(version)
+# - task: NuGetCommand@2
+#   inputs: 
+#     command: push
+#     nuGetFeedType: external
+#     publishFeedCredentials: Tachocline@Nuget.org
+#     versioningScheme: byEnvVar
+#     versoiningEnvVar: version
