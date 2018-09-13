@@ -19,7 +19,7 @@ steps:
     minorVersion: '0'
     patchVersion: '2'
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs: 
     command: 'push'
     nuGetFeedType: 'external'
