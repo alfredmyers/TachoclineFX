@@ -2,7 +2,7 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  buildConfiguration: 'Release'
+- buildConfiguration: 'Release'
 
 steps:
 - script: |
@@ -19,10 +19,9 @@ steps:
     minorVersion: '0'
     patchVersion: '2'
 
-# - task: DotNetCoreCLI@2
-#   inputs: 
-#     command: 'push'
-#     nuGetFeedType: 'external'
-#     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
-#     publishFeedCredentials: 'Tachocline@Nuget.org'
-    # versioningScheme: byPrereleaseNumber
+- task: DotNetCoreCLI@2
+  inputs: 
+    command: 'push'
+    nuGetFeedType: 'external'
+    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
+    publishFeedCredentials: 'Tachocline Azure Pipeline'
