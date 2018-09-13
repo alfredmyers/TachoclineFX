@@ -19,10 +19,10 @@ steps:
     minorVersion: '0'
     patchVersion: '2'
 
-- task: DotNetCoreCLI@2
-  inputs: 
-    command: 'push'
-    nuGetFeedType: 'external'
-    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
-    publishFeedCredentials: 'Tachocline@Nuget.org'
+# - task: DotNetCoreCLI@2
+#   inputs: 
+#     command: 'push'
+#     nuGetFeedType: 'external'
+#     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
+#     publishFeedCredentials: 'Tachocline@Nuget.org'
     # versioningScheme: byPrereleaseNumber
