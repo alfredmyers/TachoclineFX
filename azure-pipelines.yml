@@ -7,15 +7,22 @@ variables:
 steps:
 - script: |
     dotnet build -c $(buildConfiguration)
-    dotnet publish -c $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
 
-- task: PublishBuildArtifacts@1
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    configuration: '$(buildConfiguration)'
+    packagesToPack: '**/Tachocline/*.csproj'
+    packDirectory: '$(build.artifactStagingDirectory)'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '0'
+    patchVersion: '2'
 
-# - script: dotnet pack /p:PackageVersion=$(version)
-# - task: NuGetCommand@2
-#   inputs: 
-#     command: push
-#     nuGetFeedType: external
-#     publishFeedCredentials: Tachocline@Nuget.org
-#     versioningScheme: byEnvVar
-#     versoiningEnvVar: version
+- task: DotNetCoreCLI@2
+  inputs: 
+    command: 'push'
+    nuGetFeedType: 'external'
+    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
+    publishFeedCredentials: 'Tachocline@Nuget.org'
+    # versioningScheme: byPrereleaseNumber
