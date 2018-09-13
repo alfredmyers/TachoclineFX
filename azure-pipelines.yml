@@ -15,10 +15,10 @@ steps:
     packagesToPack: '**/Tachocline/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     versionEnvVar: '0.0.2'
-    versioningScheme: 'byEnvVar'
     majorVersion: '0'
     minorVersion: '0'
     patchVersion: '2'
+    versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
   inputs: 
@@ -27,4 +27,4 @@ steps:
     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
     publishFeedCredentials: 'Tachocline Azure Pipeline'
     versionEnvVar: '0.0.2'
-    versioningScheme: 'byEnvVar'
+    versioningScheme: 'byBuildNumber'
