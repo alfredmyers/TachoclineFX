@@ -14,7 +14,7 @@ steps:
     configuration: '$(buildConfiguration)'
     packagesToPack: '**/Tachocline/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
-    versioningScheme: 'byPrereleaseNumber'
+    versioningScheme: 'byBuildNumber'
     majorVersion: '0'
     minorVersion: '0'
     patchVersion: '2'
