@@ -7,18 +7,19 @@ variables:
 steps:
 - script: |
     dotnet build -c $(buildConfiguration)
+    dotnet pack /Tachocline/Tachocline.csproj -c $(buildConfiguration) -o $(build.artifactStagingDirectory)
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'pack'
-    configuration: '$(buildConfiguration)'
-    packagesToPack: '**/Tachocline/*.csproj'
-    packDirectory: '$(build.artifactStagingDirectory)'
-    versionEnvVar: '0.0.2'
-    majorVersion: '0'
-    minorVersion: '0'
-    patchVersion: '2'
-    versioningScheme: 'byBuildNumber'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'pack'
+#     configuration: '$(buildConfiguration)'
+#     packagesToPack: '**/Tachocline/*.csproj'
+#     packDirectory: '$(build.artifactStagingDirectory)'
+#     versionEnvVar: '0.0.2'
+#     majorVersion: '0'
+#     minorVersion: '0'
+#     patchVersion: '2'
+#     versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
   inputs: 
@@ -26,5 +27,3 @@ steps:
     nuGetFeedType: 'external'
     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
     publishFeedCredentials: 'Tachocline Azure Pipeline'
-    versionEnvVar: '0.0.2'
-    versioningScheme: 'byBuildNumber'
