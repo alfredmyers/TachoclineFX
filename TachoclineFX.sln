@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tachocline", "Tachocline\Ta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{DCC9292A-75E9-424C-9C93-B58CF0F29E2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tachocline.Tests", "Tachocline.Tests\Tachocline.Tests.csproj", "{D4BF58A7-8E6B-4162-8E19-34BEA8843EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DCC9292A-75E9-424C-9C93-B58CF0F29E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC9292A-75E9-424C-9C93-B58CF0F29E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC9292A-75E9-424C-9C93-B58CF0F29E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BF58A7-8E6B-4162-8E19-34BEA8843EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BF58A7-8E6B-4162-8E19-34BEA8843EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BF58A7-8E6B-4162-8E19-34BEA8843EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BF58A7-8E6B-4162-8E19-34BEA8843EA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
