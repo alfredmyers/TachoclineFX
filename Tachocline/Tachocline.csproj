@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.1</Version> -->
+    <Version>0.1.0</Version> -->
     <Authors>alfredmyers</Authors>
     <RepositoryUrl>https://github.com/alfredmyers/TachoclineFX</RepositoryUrl>
   </PropertyGroup>

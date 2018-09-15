@@ -7,15 +7,15 @@ namespace Tachocline.Linq
 {
     public static class EnumerableExtensions
     {
-        public static void ForEach(IEnumerable sequence, Action<object> action)
+        public static void ForEach(this IEnumerable sequence, Action<object> action)
         {
             foreach (var item in sequence)
             {
-                action(sequence);
+                action(item);
             }
         }
         
-        public static void ForEach<T>(IEnumerable<T> sequence, Action<T> action)
+        public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
         {
             foreach (var item in sequence)
             {
@@ -23,7 +23,7 @@ namespace Tachocline.Linq
             }
         }
 
-        public static IEnumerable<TSource> Where<TSource, TException>(IEnumerable<TSource> sequence, Predicate<TSource> predicate, Action<TException, TSource> exceptionHandler) where TException : Exception
+        public static IEnumerable<TSource> Where<TSource, TException>(this IEnumerable<TSource> sequence, Predicate<TSource> predicate, Action<TException, TSource> exceptionHandler) where TException : Exception
         {
             if (sequence == null)
             {
