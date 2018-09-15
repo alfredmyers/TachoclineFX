@@ -10,14 +10,20 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'pack'
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '-c $(buildConfiguration) --collect "Code coverage"'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: pack
     configuration: '$(buildConfiguration)'
     packagesToPack: '**/Tachocline/*.csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     versioningScheme: 'byPrereleaseNumber'
     majorVersion: '0'
-    minorVersion: '0'
-    patchVersion: '2'
+    minorVersion: '1'
+    patchVersion: '0'
 
 - task: NuGetCommand@2
   inputs: 
