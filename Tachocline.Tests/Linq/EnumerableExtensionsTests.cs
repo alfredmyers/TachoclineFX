@@ -56,19 +56,21 @@ public class EnumerableExtensionsTests
     }
 
     [Fact]
-    public void ResultingSequenceSkipsExceptions(){
-        int[] numbers = {1, 2, 0, 3};
-        var actual = numbers.Where(i => 5 / i > 0, (DivideByZeroException ex, int i) => {});
-        int[] expected = {1, 2, 3};
+    public void ResultingSequenceSkipsExceptions()
+    {
+        int[] numbers = { 1, 2, 0, 3 };
+        var actual = numbers.Where(i => 5 / i > 0, (DivideByZeroException ex, int i) => { });
+        int[] expected = { 1, 2, 3 };
         Assert.Equal(expected, actual);
     }
 
     [Fact]
-    public void ExeptonHandlerIsInvoked(){
-        int[] numbers = {1, 2, 0, 3};
+    public void ExeptonHandlerIsInvoked()
+    {
+        int[] numbers = { 1, 2, 0, 3 };
         var actual = new List<int>();
         numbers.Where(i => 5 / i > 0, (DivideByZeroException ex, int i) => actual.Add(i)).ToList();
-        int[] expected = {0};
+        int[] expected = { 0 };
         Assert.Equal(expected, actual);
     }
 }
