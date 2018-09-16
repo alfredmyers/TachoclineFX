@@ -7,14 +7,6 @@ namespace Tachocline.Linq
 {
     public static class EnumerableExtensions
     {
-        public static void ForEach(this IEnumerable sequence, Action<object> action)
-        {
-            foreach (var item in sequence)
-            {
-                action(item);
-            }
-        }
-        
         public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
         {
             foreach (var item in sequence)
