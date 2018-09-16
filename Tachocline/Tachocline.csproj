@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0</Version> -->
+    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild> -->
+    <Version>0.1.0</Version>
     <Authors>alfredmyers</Authors>
     <RepositoryUrl>https://github.com/alfredmyers/TachoclineFX</RepositoryUrl>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.0" />
   </ItemGroup>
 
