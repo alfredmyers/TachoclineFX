@@ -17,15 +17,15 @@ namespace Tachocline.Linq
 
         public static IEnumerable<TSource> Where<TSource, TException>(this IEnumerable<TSource> sequence, Predicate<TSource> predicate, Action<TException, TSource> exceptionHandler) where TException : Exception
         {
-            if (sequence == null)
+            if (sequence is null)
             {
                 throw new ArgumentNullException(nameof(sequence));
             }
-            if (predicate == null)
+            if (predicate is null)
             {
                 throw new ArgumentNullException(nameof(predicate));
             }
-            if (exceptionHandler == null)
+            if (exceptionHandler is null)
             {
                 throw new ArgumentNullException(nameof(exceptionHandler));
             }

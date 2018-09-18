@@ -56,7 +56,7 @@ public static class EnumerableExtensionsTests
     }
 
     [Fact]
-    public static void ExeptonHandlerIsInvoked()
+    public static void ExceptionHandlerIsInvoked()
     {
         int[] numbers = { 1, 2, 0, 3 };
         var actual = new List<int>();
