@@ -28,6 +28,6 @@ steps:
 - task: NuGetCommand@2
   inputs: 
     command: 'push'
-    nuGetFeedType: 'external'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: CI
     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
-    publishFeedCredentials: 'Tachocline Azure Pipeline'
