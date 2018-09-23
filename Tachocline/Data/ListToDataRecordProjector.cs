@@ -6,27 +6,21 @@ using System.Diagnostics;
 
 namespace Tachocline.Data
 {
-    internal sealed class ListToDataRecordProjector : IDataRecord
+    public abstract class ListToDataRecordProjector : IDataRecord
     {
-        private IList _list;
-
-        public ListToDataRecordProjector() { }
-        
-        public ListToDataRecordProjector(IList list) => _list = list ?? throw new ArgumentNullException(nameof(list));
-
-        public object this[int i] => _list[i];
+        public object this[int i] => List[i];
 
         public object this[string name] => throw new NotSupportedException();
 
-        public int FieldCount => _list.Count;
+        public virtual int FieldCount => List.Count;
 
-        public bool GetBoolean(int i) => (bool)_list[i];
+        public bool GetBoolean(int i) => (bool)List[i];
 
-        public byte GetByte(int i) => (byte)_list[i];
+        public byte GetByte(int i) => (byte)List[i];
 
         public long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length) => throw new NotSupportedException();
 
-        public char GetChar(int i) => (char)_list[i];
+        public char GetChar(int i) => (char)List[i];
 
         public long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length) => throw new NotSupportedException();
 
@@ -34,35 +28,35 @@ namespace Tachocline.Data
 
         public string GetDataTypeName(int i) => throw new NotSupportedException();
 
-        public DateTime GetDateTime(int i) => (DateTime)_list[i];
+        public DateTime GetDateTime(int i) => (DateTime)List[i];
 
-        public decimal GetDecimal(int i) => (decimal)_list[i];
+        public decimal GetDecimal(int i) => (decimal)List[i];
 
-        public double GetDouble(int i) => (double)_list[i];
+        public double GetDouble(int i) => (double)List[i];
 
-        public Type GetFieldType(int i) => _list[i].GetType();
+        public Type GetFieldType(int i) => List[i].GetType();
 
-        public float GetFloat(int i) => (float)_list[i];
+        public float GetFloat(int i) => (float)List[i];
 
-        public Guid GetGuid(int i) => (Guid)_list[i];
+        public Guid GetGuid(int i) => (Guid)List[i];
 
-        public short GetInt16(int i) => (short)_list[i];
+        public short GetInt16(int i) => (short)List[i];
 
-        public int GetInt32(int i) => (int)_list[i];
+        public int GetInt32(int i) => (int)List[i];
 
-        public long GetInt64(int i) => (long)_list[i];
+        public long GetInt64(int i) => (long)List[i];
 
         public string GetName(int i) => throw new NotSupportedException();
 
         public int GetOrdinal(string name) => throw new NotSupportedException();
 
-        public string GetString(int i) => (string)_list[i];
+        public string GetString(int i) => (string)List[i];
 
-        public object GetValue(int i) => _list[i];
+        public object GetValue(int i) => List[i];
 
         public int GetValues(object[] values)
         {
-            var current = _list;
+            var current = List;
 
             Debug.Assert(current.Count == values.Length);
 
@@ -71,19 +65,8 @@ namespace Tachocline.Data
             return current.Count;
         }
 
-        public bool IsDBNull(int i) => _list[i] == DBNull.Value;
+        public bool IsDBNull(int i) => List[i] == DBNull.Value;
 
-        public IList List
-        {
-            get
-            {
-                return _list;
-            }
-
-            set
-            {
-                _list = value ?? throw new ArgumentNullException(nameof(value));
-            }
-        }
+        public IList List { get; set; }
     }
 }
