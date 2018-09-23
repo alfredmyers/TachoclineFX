@@ -26,7 +26,7 @@ namespace Tachocline.Data
 
         public IDataReader GetData(int i) => throw new NotSupportedException();
 
-        public string GetDataTypeName(int i) => throw new NotSupportedException();
+        public string GetDataTypeName(int i) => List[i].GetType().Name;
 
         public DateTime GetDateTime(int i) => (DateTime)List[i];
 
