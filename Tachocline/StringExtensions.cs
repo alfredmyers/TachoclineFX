@@ -15,7 +15,7 @@ namespace Tachocline
 
             if (maxLength <= 1)
             {
-                throw new ArgumentOutOfRangeException(nameof(maxLength), maxLength, "{nameof(maxLenght)} must be greater or equal to one.");
+                throw new ArgumentOutOfRangeException(nameof(maxLength), maxLength, "{nameof(maxLength)} must be greater or equal to one.");
             }
             Contract.EndContractBlock();
 
