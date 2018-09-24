@@ -31,7 +31,7 @@ namespace Tachocline.Data
 
         public static int? GetNullableInt32(this IDataRecord record, int ordinal) => GetNullableValue(record.GetInt32, ordinal);
 
-        public static long? GetNullableGetInt64(this IDataRecord record, int ordinal) => GetNullableValue(record.GetInt64, ordinal);
+        public static long? GetNullableInt64(this IDataRecord record, int ordinal) => GetNullableValue(record.GetInt64, ordinal);
 
         public static float? GetNullableFloat(this IDataRecord record, int ordinal) => GetNullableValue(record.GetFloat, ordinal);
 
