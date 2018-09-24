@@ -47,6 +47,9 @@ public class ListExtensionsTests
     }
 
     [Fact]
+    public static void NullListGetValueThrowsArgumentNullException() => Assert.Throws<ArgumentNullException>(()=>((IList)null).GetValue(0));
+
+    [Fact]
     public void GetObject() => Assert.Equal(_list, _range.Select(_list.GetValue).ToList());
 
     [Fact]

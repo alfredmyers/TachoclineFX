@@ -3,12 +3,12 @@ using System.Collections;
 using Xunit;
 using Tachocline.Data;
 
-public sealed class ListToDataRecordProjector : IDisposable
+public sealed class ListToDataRecordProjectorTests : IDisposable
 {
     private readonly ArrayList _record;
     private readonly ListSequenceDataReader _reader;
 
-    public ListToDataRecordProjector()
+    public ListToDataRecordProjectorTests()
     {
         _record = new ArrayList { true, byte.MaxValue, char.MaxValue, DateTime.MaxValue, Decimal.MaxValue, Double.MaxValue, float.MaxValue,
             Guid.Empty, short.MaxValue, int.MaxValue, long.MaxValue, string.Empty, DBNull.Value };
@@ -31,7 +31,7 @@ public sealed class ListToDataRecordProjector : IDisposable
     }
 
     [Fact] public void StringIndexer() => Assert.Throws<NotSupportedException>(() => _reader["anything"]);
-    [Fact] public void FieldCount() => Assert.Equal(_record.Count, _reader.FieldCount);
+    [Fact] public void FieldCount() => Assert.Equal(_record.Count, ((ListToDataRecordProjector)_reader).FieldCount);
     [Fact] public void GetBoolean() => Assert.True(_reader.GetBoolean(0));
     [Fact] public void GetByte() => Assert.Equal(byte.MaxValue, _reader.GetByte(1));
     [Fact] public void GetBytes() => Assert.Throws<NotSupportedException>(() => _reader.GetBytes(0, 0, null, 0, 0));
@@ -51,6 +51,15 @@ public sealed class ListToDataRecordProjector : IDisposable
     [Fact] public void GetDateTime() => Assert.Equal(DateTime.MaxValue, _reader.GetDateTime(3));
     [Fact] public void GetDecimal() => Assert.Equal(decimal.MaxValue, _reader.GetDecimal(4));
     [Fact] public void GetDouble() => Assert.Equal(double.MaxValue, _reader.GetDouble(5));
+    
+    [Fact] 
+    public void GetFieldType() {
+        for (int i = 0; i < _record.Count; i++)
+        {
+            Assert.Equal(_record[i].GetType(), _reader.GetFieldType(i));
+        }
+    }
+    
     [Fact] public void GetFloat() => Assert.Equal(float.MaxValue, _reader.GetFloat(6));
     [Fact] public void GetGuid() => Assert.Equal(Guid.Empty, _reader.GetGuid(7));
     [Fact] public void GetInt16() => Assert.Equal(short.MaxValue, _reader.GetInt16(8));
