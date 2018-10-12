@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>net461;net471;netcoreapp2.0</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -14,6 +14,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tachocline\Tachocline.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <Compile Remove="**/Tuple*.cs" />
   </ItemGroup>
 
 </Project>
