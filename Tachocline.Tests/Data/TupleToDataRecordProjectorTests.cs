@@ -4,17 +4,18 @@ using Xunit;
 using Tachocline.Data;
 using System.Linq;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 public sealed class TupleToDataRecordProjectorTests : IDisposable
 {
-    private readonly ArrayList _record;
-    private readonly ListSequenceDataReader _reader;
+    private readonly ITuple _record;
+    private readonly TupleSequenceDataReader _reader;
 
     public TupleToDataRecordProjectorTests()
     {
-        _record = new ArrayList { true, byte.MaxValue, char.MaxValue, DateTime.MaxValue, Decimal.MaxValue, Double.MaxValue, float.MaxValue,
-            Guid.Empty, short.MaxValue, int.MaxValue, long.MaxValue, string.Empty, DBNull.Value };
-        _reader = new ListSequenceDataReader(new ArrayList[] { _record }, _record.Count);
+        _record = (true, byte.MaxValue, char.MaxValue, DateTime.MaxValue, Decimal.MaxValue, Double.MaxValue, float.MaxValue,
+            Guid.Empty, short.MaxValue, int.MaxValue, long.MaxValue, string.Empty, DBNull.Value );
+        _reader = new TupleSequenceDataReader(new List<ITuple>() { _record }, _record.Length);
         _reader.Read();
     }
 
@@ -26,7 +27,7 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public void IntIndexer()
     {
-        for (int i = 0; i < _record.Count; i++)
+        for (int i = 0; i < _record.Length; i++)
         {
             Assert.Equal(_record[i], _reader[i]);
         }
@@ -43,7 +44,7 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public void GetDataTypeName()
     {
-        for (int i = 0; i < _record.Count; i++)
+        for (int i = 0; i < _record.Length; i++)
         {
             Assert.Equal(_record[i].GetType().Name, _reader.GetDataTypeName(i));
         }
@@ -56,7 +57,7 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public void GetFieldType()
     {
-        for (int i = 0; i < _record.Count; i++)
+        for (int i = 0; i < _record.Length; i++)
         {
             Assert.Equal(_record[i].GetType(), _reader.GetFieldType(i));
         }
@@ -74,7 +75,7 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public void GetValue()
     {
-        for (int i = 0; i < _record.Count; i++)
+        for (int i = 0; i < _record.Length; i++)
         {
             Assert.Equal(_reader[i], _reader.GetValue(i));
         }
@@ -83,9 +84,12 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public void GetValues()
     {
-        var copy = new object[_record.Count];
+        var copy = new object[_record.Length];
         _reader.GetValues(copy);
-        Assert.Equal(_record.ToArray(), copy);
+        for (int i = 0; i < _record.Length; i++)
+        {
+            Assert.Equal(_record[i], copy[i]);
+        }
     }
 
     [Fact] public void IsDbNull() => Assert.True(_reader.IsDBNull(12));
