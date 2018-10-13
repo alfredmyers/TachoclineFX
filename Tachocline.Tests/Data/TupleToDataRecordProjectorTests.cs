@@ -97,15 +97,15 @@ public sealed class TupleToDataRecordProjectorTests : IDisposable
     [Fact]
     public static void FieldCount()
     {
-        var list = new List<int> { 1, 2, 3 };
+        var tuple = (ITuple)( 1, 2, 3 );
         var record = new DataRecord
         {
-            List = list
+            Tuple = tuple
         };
-        Assert.Equal(list.Count, record.FieldCount);
+        Assert.Equal(tuple.Length, record.FieldCount);
     }
 
-    private class DataRecord : ListToDataRecordProjector
+    private class DataRecord : TupleToDataRecordProjector
     {
 
     }
