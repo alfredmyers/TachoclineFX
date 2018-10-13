@@ -24,10 +24,3 @@ steps:
     majorVersion: '0'
     minorVersion: '1'
     patchVersion: '0'
-
-- task: NuGetCommand@2
-  inputs: 
-    command: 'push'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: CI
-    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
