@@ -10,11 +10,14 @@ namespace Tachocline.Data
     public sealed class TupleSequenceDataReader : TupleToDataRecordProjector, IDataReader
     {
         private IEnumerator<ITuple> _iterator;
-        private readonly IEnumerable<ITuple> _sequence;
 
         public TupleSequenceDataReader(IEnumerable<ITuple> sequence, int fieldCount)
         {
-            _sequence = sequence ?? throw new ArgumentNullException(nameof(sequence));
+            if (sequence is null)
+            {
+                throw new ArgumentNullException(nameof(sequence));
+            }
+
             _iterator = sequence.GetEnumerator();
             FieldCount = fieldCount;
         }
@@ -55,9 +58,6 @@ namespace Tachocline.Data
             return moved;
         }
 
-        public DataTable GetSchemaTable()
-        {
-            throw new NotSupportedException();
-        }
+        public DataTable GetSchemaTable() => throw new NotSupportedException();
     }
 }
