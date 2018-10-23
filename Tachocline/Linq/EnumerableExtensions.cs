@@ -17,7 +17,6 @@ namespace Tachocline.Linq
 
         public static TSource TryGetSingle<TSource>(this IEnumerable<TSource> source, out bool single)
         {
-
             var e = source.GetEnumerator();
 
             TSource result = default(TSource);
