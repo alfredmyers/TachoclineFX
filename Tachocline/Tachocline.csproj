@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>alfredmyers</Authors>
     <Description>The next layer, on top of .NET Core</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild> -->
     <IncludeSource>true</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
     <RepositoryUrl>https://github.com/alfredmyers/TachoclineFX</RepositoryUrl>

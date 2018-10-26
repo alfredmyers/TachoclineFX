@@ -14,20 +14,20 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '-c $(buildConfiguration) --collect "Code coverage"'
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: pack
-#     configuration: '$(buildConfiguration)'
-#     packagesToPack: '**/Tachocline/*.csproj'
-#     packDirectory: '$(build.artifactStagingDirectory)'
-#     versioningScheme: 'byPrereleaseNumber'
-#     majorVersion: '0'
-#     minorVersion: '1'
-#     patchVersion: '0'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: pack
+    configuration: '$(buildConfiguration)'
+    packagesToPack: '**/Tachocline/*.csproj'
+    packDirectory: '$(build.artifactStagingDirectory)'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '1'
+    patchVersion: '0'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: push
     nuGetFeedType: 'internal'
     packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 
+    publishVstsFeed: 'CI'
