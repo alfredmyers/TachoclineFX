@@ -20,4 +20,10 @@
     <Compile Remove="**/Tuple*.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="LoremIpsum.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
